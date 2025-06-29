@@ -273,3 +273,6 @@ paket-files/
 .idea/
 *.sln.iml
 *AssemblyInfo.cs
+
+# Harmony added as mod dependency
+1.6/Assemblies/0Harmony.dll
