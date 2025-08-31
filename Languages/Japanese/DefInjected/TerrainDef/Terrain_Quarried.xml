@@ -2,8 +2,14 @@
 <LanguageData>
 
   <QRY_QuarriedGround.label>採石場</QRY_QuarriedGround.label>
+  <QRY_QuarriedGroundOrbitalPlatform.label>採石場</QRY_QuarriedGroundOrbitalPlatform.label>
+  <QRY_QuarriedGroundMechanoidPlatform.label>採石場</QRY_QuarriedGroundMechanoidPlatform.label>
   <QRY_QuarriedGroundWall.label>採石場の崖</QRY_QuarriedGroundWall.label>
+  <QRY_QuarriedGroundWallOrbitalPlatform.label>採石場</QRY_QuarriedGroundWallOrbitalPlatform.label>
+  <QRY_QuarriedGroundWallMechanoidPlatform.label>採石場</QRY_QuarriedGroundWallMechanoidPlatform.label>
+
   <QRY_ReclaimedSoil.label>再生された土壌</QRY_ReclaimedSoil.label>
   <QRY_ReclaimedSoil.tools.dirt.label>土</QRY_ReclaimedSoil.tools.dirt.label>
+
 
 </LanguageData>
