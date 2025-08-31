@@ -177,5 +177,40 @@ namespace Quarry {
 						 where (d.category == ThingCategory.Item && d.scatterableOnMapGen && !d.destroyOnDrop && !d.MadeFromStuff && (d.GetCompProperties<CompProperties_Rottable>() == null || QuarrySettings.allowRottable))
 						 select d;
 		}
-	}
+
+        public static List<QuarryRockType> RockTypesUnderArea(IntVec3 loc, Rot4 rot, IntVec2 size, Map map)
+        {
+            var rocksUnder = new List<QuarryRockType>();
+            var rockKeysAdded = new HashSet<string>();
+
+            foreach (IntVec3 c in GenAdj.CellsOccupiedBy(loc, rot, size))
+            {
+                TerrainDef td = map.terrainGrid.TerrainAt(c);
+
+                if (IsValidQuarryRock(td, out QuarryRockType rockType, out string key))
+                {
+                    if (!rocksUnder.Contains(rockType) && !rockKeysAdded.Contains(key))
+                    {
+                        rocksUnder.Add(rockType);
+                        rockKeysAdded.Add(key);
+                    }
+                }
+            }
+
+            // Fallback: if no rocks found, use map's natural rocks
+            if (rocksUnder.Count == 0)
+            {
+                foreach (var rock in QuarrySettings.quarryableStone.Values)
+                {
+                    if (Find.World.NaturalRockTypesIn(map.Tile).Contains(rock.rockDef))
+                    {
+                        rocksUnder.Add(rock);
+                    }
+                }
+            }
+
+            return rocksUnder;
+        }
+
+    }
 }

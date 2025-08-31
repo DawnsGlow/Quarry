@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using RimWorld;
+using UnityEngine;
 using Verse;
 
 namespace Quarry {
@@ -110,5 +111,33 @@ namespace Quarry {
 				Drawer.MarkForDraw();
 			}
 		}
-	}
+
+        public void RenderMouseAttachments()
+        {
+            IntVec3 c = UI.MouseCell();
+            if (!c.InBounds(map)) 
+				return;
+
+            if (QuarryUtility.IsValidQuarryRock(map.terrainGrid.TerrainAt(c), out QuarryRockType rockType, out string key))
+            {
+                Vector2 vector = c.ToVector3().MapToUIPosition();
+                GUI.color = Color.white;
+                Text.Font = GameFont.Small;
+                Text.Anchor = TextAnchor.MiddleLeft;
+
+                DrawResourceRow(vector, 0, rockType.chunkDef, key);
+
+                Text.Anchor = TextAnchor.UpperLeft;
+            }
+        }
+
+        private void DrawResourceRow(Vector2 vector, int rowIndex, ThingDef thingDef, string key)
+        {
+            float num = (UI.CurUICellSize() - 27f) / 2f;
+            Rect rect = new Rect(vector.x + num, vector.y - UI.CurUICellSize() + num + rowIndex * 31f, 27f, 27f);
+            Widgets.ThingIcon(rect, thingDef);
+            Widgets.Label(new Rect(rect.xMax + 4f, rect.y, 999f, 29f), key);
+        }
+
+    }
 }

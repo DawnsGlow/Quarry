@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-
 using UnityEngine;
 using Verse;
 
@@ -46,10 +45,42 @@ namespace Quarry
             {
                 // Draw the placement areas
                 Find.CurrentMap.GetComponent<QuarryGrid>().MarkForDraw();
-                Log.Message("Drawing Cells");
+                // Log.Message("Drawing Cells");
                 GenDraw.DrawFieldEdges(GenAdj.CellsOccupiedBy(center, rot, def.Size).ToList(), Color.green);
             }
         }
+
+        public override void DrawMouseAttachments(BuildableDef def)
+        {
+            //Find.CurrentMap.GetComponent<QuarryGrid>().RenderMouseAttachments();
+            Map map = Find.CurrentMap;
+            IntVec3 mouseCell = UI.MouseCell();
+            if (!mouseCell.InBounds(map))
+                return;
+
+            // Get all rocks under the building footprint
+            var rocksUnder = QuarryUtility.RockTypesUnderArea(mouseCell, Rot4.North, def.Size, map);
+
+            Vector2 vector = mouseCell.ToVector3().MapToUIPosition();
+            GUI.color = Color.white;
+            Text.Font = GameFont.Small;
+            Text.Anchor = TextAnchor.MiddleLeft;
+
+            for (int i = 0; i < rocksUnder.Count; i++)
+            {
+                DrawResourceRow(vector, i, rocksUnder[i].chunkDef, rocksUnder[i].rockDef.label);
+            }
+
+            Text.Anchor = TextAnchor.UpperLeft;
+        }
         
+        private void DrawResourceRow(Vector2 vector, int rowIndex, ThingDef thingDef, string key)
+        {
+            float num = (UI.CurUICellSize() - 27f) / 2f;
+            Rect rect = new Rect(vector.x + num, vector.y - UI.CurUICellSize() + num - rowIndex * 31f, 27f, 27f);
+            Widgets.ThingIcon(rect, thingDef);
+            Widgets.Label(new Rect(rect.xMax + 4f, rect.y, 999f, 29f), key);
+        }
+
     }
 }
