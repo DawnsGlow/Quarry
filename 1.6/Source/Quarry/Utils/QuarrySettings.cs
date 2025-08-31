@@ -8,7 +8,7 @@ namespace Quarry
     public class QuarrySettings : ModSettings
     {
 
-        internal static bool placeAnywhere = false;
+        internal static bool placeAnywhere = true;
         internal static bool letterSent = false;
         internal static bool allowRottable = false;
         internal static int quarryMaxHealth = 2000;
