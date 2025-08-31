@@ -44,13 +44,13 @@
 		<texturePath>Cupro/Terrain/QuarriedGround</texturePath>
 	</TerrainDef>
 
-	<TerrainDef ParentName="QRY_QuarriedGroundBase">
+	<TerrainDef ParentName="QRY_QuarriedGroundBase" MayRequire="Ludeon.RimWorld.Odyssey">
 		<label>quarried ground</label>
 		<defName>QRY_QuarriedGroundOrbitalPlatform</defName>
 		<texturePath>Terrain/Surfaces/OrbitalPlatform/OrbitalPlatform</texturePath>
 	</TerrainDef>
 
-	<TerrainDef ParentName="QRY_QuarriedGroundBase">
+	<TerrainDef ParentName="QRY_QuarriedGroundBase" MayRequire="Ludeon.RimWorld.Odyssey">
 		<label>quarried ground</label>
 		<defName>QRY_QuarriedGroundMechanoidPlatform</defName>
     	<texturePath>Terrain/Surfaces/MechanoidPlatform/MechanoidPlatform</texturePath>
@@ -63,7 +63,7 @@
 		<texturePath>Cupro/Terrain/QuarriedGround</texturePath>
 	</TerrainDef>
 
-	<TerrainDef ParentName="QRY_QuarriedGroundWallBase">
+	<TerrainDef ParentName="QRY_QuarriedGroundWallBase" MayRequire="Ludeon.RimWorld.Odyssey">
 		<label>quarried ground</label>
 		<defName>QRY_QuarriedGroundWallOrbitalPlatform</defName>
 		<edgeType>FadeRough</edgeType>
@@ -89,7 +89,7 @@
 		</spaceEdgeGraphicData>
 	</TerrainDef>
 
-	<TerrainDef ParentName="QRY_QuarriedGroundWallBase">
+	<TerrainDef ParentName="QRY_QuarriedGroundWallBase" MayRequire="Ludeon.RimWorld.Odyssey">
 		<label>quarried ground</label>
 		<defName>QRY_QuarriedGroundWallMechanoidPlatform</defName>
     	<texturePath>Terrain/Surfaces/MechanoidPlatform/MechanoidPlatform</texturePath>

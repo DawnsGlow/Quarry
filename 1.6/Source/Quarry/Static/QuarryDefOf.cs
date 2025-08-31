@@ -15,11 +15,16 @@ namespace Quarry
         public static WorkTypeDef QuarryMining;
         public static TerrainDef QRY_QuarriedGround;
         public static TerrainDef QRY_QuarriedGroundWall;
-        public static TerrainDef QRY_QuarriedGroundOrbitalPlatform;
-        public static TerrainDef QRY_QuarriedGroundWallOrbitalPlatform;
-        public static TerrainDef QRY_QuarriedGroundMechanoidPlatform;
-        public static TerrainDef QRY_QuarriedGroundWallMechanoidPlatform;
         public static TerrainDef QRY_ReclaimedSoil;
+
+        [MayRequire("Ludeon.RimWorld.Odyssey")]
+        public static TerrainDef QRY_QuarriedGroundOrbitalPlatform;
+        [MayRequire("Ludeon.RimWorld.Odyssey")]
+        public static TerrainDef QRY_QuarriedGroundWallOrbitalPlatform;
+        [MayRequire("Ludeon.RimWorld.Odyssey")]
+        public static TerrainDef QRY_QuarriedGroundMechanoidPlatform;
+        [MayRequire("Ludeon.RimWorld.Odyssey")]
+        public static TerrainDef QRY_QuarriedGroundWallMechanoidPlatform;
 
         public static JobDef QRY_MineQuarry;
 

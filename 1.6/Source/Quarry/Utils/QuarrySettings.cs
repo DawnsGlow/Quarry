@@ -41,7 +41,7 @@ namespace Quarry
             base.ExposeData();
 
             Scribe_Values.Look(ref letterSent, "QRY_letterSent", false);
-            Scribe_Values.Look(ref placeAnywhere, "QRY_placeAnywhere", false);
+            Scribe_Values.Look(ref placeAnywhere, "QRY_placeAnywhere", true);
             Scribe_Values.Look(ref allowRottable, "QRY_allowRottable", false);
             Scribe_Values.Look(ref quarryMaxHealth, "QRY_quarryMaxHealth", 2000);
             Scribe_Values.Look(ref junkChance, "QRY_junkChance", 60);

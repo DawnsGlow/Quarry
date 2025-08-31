@@ -277,12 +277,12 @@ namespace Quarry
                 TerrainDef QuarriedGroundWall;
                 TerrainDef terrain = map.terrainGrid.TerrainAt(rect.First());
 
-                if (terrain.defName == "OrbitalPlatform")
+                if (ModsConfig.IsActive("Ludeon.RimWorld.Odyssey") && terrain.defName == "OrbitalPlatform")
                 {
                     QuarriedGround = QuarryDefOf.QRY_QuarriedGroundOrbitalPlatform;
                     QuarriedGroundWall = QuarryDefOf.QRY_QuarriedGroundWallOrbitalPlatform;
                 }
-                else if (terrain.defName == "MechanoidPlatform")
+                else if (ModsConfig.IsActive("Ludeon.RimWorld.Odyssey") && terrain.defName == "MechanoidPlatform")
                 {
                     QuarriedGround = QuarryDefOf.QRY_QuarriedGroundMechanoidPlatform;
                     QuarriedGroundWall = QuarryDefOf.QRY_QuarriedGroundWallMechanoidPlatform;
