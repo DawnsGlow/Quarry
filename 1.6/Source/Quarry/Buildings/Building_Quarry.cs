@@ -269,25 +269,47 @@ namespace Quarry
                 //    map.GetComponent<QuarryGrid>().RemoveFromGrid(rect);
                 RockTypesFromUnder();
                 // Now that all the cells have been processed, create ThingDef lists
-                // Change the terrain here to be quarried stone				
+                // Change the terrain here to be quarried stone
                 // Spawn filth for the quarry
+
+                // Set the correct terrain type, to use correct texture
+                TerrainDef QuarriedGround;
+                TerrainDef QuarriedGroundWall;
+                TerrainDef terrain = map.terrainGrid.TerrainAt(rect.First());
+
+                if (terrain.defName == "OrbitalPlatform")
+                {
+                    QuarriedGround = QuarryDefOf.QRY_QuarriedGroundOrbitalPlatform;
+                    QuarriedGroundWall = QuarryDefOf.QRY_QuarriedGroundWallOrbitalPlatform;
+                }
+                else if (terrain.defName == "MechanoidPlatform")
+                {
+                    QuarriedGround = QuarryDefOf.QRY_QuarriedGroundMechanoidPlatform;
+                    QuarriedGroundWall = QuarryDefOf.QRY_QuarriedGroundWallMechanoidPlatform;
+                }
+                else
+                {
+                    QuarriedGround = QuarryDefOf.QRY_QuarriedGround;
+                    QuarriedGroundWall = QuarryDefOf.QRY_QuarriedGroundWall;
+                }
+
                 foreach (IntVec3 c in rect)
                 {
                     SpawnFilth(c);
                     if (rect.ContractedBy(WallThickness).Contains(c))
                     {
-                        Map.terrainGrid.SetTerrain(c, QuarryDefOf.QRY_QuarriedGround);
+                        Map.terrainGrid.SetTerrain(c, QuarriedGround);
                     }
                     else
                     {
-                        Map.terrainGrid.SetTerrain(c, QuarryDefOf.QRY_QuarriedGroundWall);
+                        Map.terrainGrid.SetTerrain(c, QuarriedGroundWall);
                     }
                 }
                 // Change the ground back to normal quarried stone where the ladders are
                 // This is to negate the speed decrease and encourages pawns to use the ladders
                 foreach (IntVec3 offset in LadderOffsets)
                 {
-                    Map.terrainGrid.SetTerrain(Position + offset.RotatedBy(Rotation), QuarryDefOf.QRY_QuarriedGround);
+                    Map.terrainGrid.SetTerrain(Position + offset.RotatedBy(Rotation), QuarriedGround);
                 }
             }
         }
